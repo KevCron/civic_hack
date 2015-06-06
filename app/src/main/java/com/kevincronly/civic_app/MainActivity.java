@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -23,14 +24,13 @@ public class MainActivity extends ActionBarActivity
         setContentView(R.layout.login_activity);
         setTitle("trackr");
 
-        /*
         ArrayList<String> users = new ArrayList<String>();
         users.add("robertlee");
         users.add("pg13");
         users.add("c_morgan");
         users.add("sallyclark");
         users.add("dtuff");
-        users.add("deronw");*/
+        users.add("deronw");
 
         EditText userET = (EditText) findViewById(R.id.email_ET);
 
@@ -58,15 +58,22 @@ public class MainActivity extends ActionBarActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-
-
         return super.onOptionsItemSelected(item);
     }
 
     public void login()
     {
-        //if (users.contains(userE))
         Intent intent = new Intent(this, MapActivity.class);
         startActivity(intent);
+        /*
+        if (users.contains(userET.getText()))
+        {
+            Intent intent = new Intent(this, MapActivity.class);
+            startActivity(intent);
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(), "Incorrect username/password", Toast.LENGTH_LONG).show();
+        }*/
     }
 }
