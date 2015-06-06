@@ -7,26 +7,41 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
+import java.util.ArrayList;
 
 
 public class MainActivity extends ActionBarActivity
 {
+    private ArrayList<String> users;
+    private EditText userET;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
-        //final Intent intent = new Intent(this, MapActivity.class);
+        setTitle("trackr");
+
+        /*
+        ArrayList<String> users = new ArrayList<String>();
+        users.add("robertlee");
+        users.add("pg13");
+        users.add("c_morgan");
+        users.add("sallyclark");
+        users.add("dtuff");
+        users.add("deronw");*/
+
+        EditText userET = (EditText) findViewById(R.id.email_ET);
 
         final Button btn = (Button) findViewById(R.id.login_button);
-        /*btn.setOnClickListener(new View.OnClickListener() {
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                //startActivity(intent);
+                login();
             }
-        });*/
+        });
     }
 
     @Override
@@ -43,16 +58,14 @@ public class MainActivity extends ActionBarActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
 
         return super.onOptionsItemSelected(item);
     }
 
-    public void login(View view)
+    public void login()
     {
+        //if (users.contains(userE))
         Intent intent = new Intent(this, MapActivity.class);
         startActivity(intent);
     }
