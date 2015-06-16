@@ -8,11 +8,13 @@ import com.google.android.gms.maps.model.LatLng;
  */
 public class Routing extends AbstractRouting<LatLng> {
 
-    public Routing(TravelMode mTravelMode) {
+    public Routing(TravelMode mTravelMode)
+    {
         super(mTravelMode);
     }
 
-    protected String constructURL(LatLng... points) {
+    protected String constructURL(LatLng... points)
+    {
         LatLng start = points[0];
         LatLng dest = points[1];
 

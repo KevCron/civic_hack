@@ -81,8 +81,7 @@ public class GoogleParser extends XMLParser implements Parser {
                 final JSONObject step = steps.getJSONObject(i);
                 //Get the start position for this step and set it on the segment
                 final JSONObject start = step.getJSONObject("start_location");
-                final LatLng position = new LatLng(start.getDouble("lat"),
-                        start.getDouble("lng"));
+                final LatLng position = new LatLng(start.getDouble("lat"), start.getDouble("lng"));
                 segment.setPoint(position);
                 //Set the length of this segment in metres
                 final int length = step.getJSONObject("distance").getInt("value");
