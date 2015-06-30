@@ -49,11 +49,9 @@ import java.util.ArrayList;
 
 import javax.net.ssl.HttpsURLConnection;
 
-
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener, RoutingListener
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener
 {
     private static final String TAG = "MapActivity";
-    private boolean tripStarted;
     private GoogleMap mMap;
     private Location mStartLocation;
     private Location mEndLocation;
@@ -221,17 +219,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         coordinates.add(new AbstractMap.SimpleEntry<String, String>("coordinate", "" + mEndLocation.getLatitude() + ", " + mEndLocation.getLongitude()));
         count = 0;
 
-       distance = distance * 0.000621371;
+        distance = distance * 0.000621371;
         Log.i(TAG, "miles " + distance);
 
         Intent i = new Intent(this, ClaimActivity.class);
         startActivityForResult(i, 0);
 
         //new PostClaimTask().execute("http://23e25190.ngrok.com/claim/new");
-
-        //Routing routing = new Routing(Routing.TravelMode.DRIVING);
-        //routing.registerListener(this);
-        //routing.execute(start, end);
     }
 
     @Override
@@ -255,7 +249,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             coordinates.add(new AbstractMap.SimpleEntry<String, String>("user_name", userName));
             coordinates.add(new AbstractMap.SimpleEntry<String, String>("IPS_location", data.getStringExtra("notes")));
 
-            new PostClaimTask().execute("http://23e25190.ngrok.com/claim/new");
+            Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content), "Claim submitted", Snackbar.LENGTH_LONG).show();
+
+            //new PostClaimTask().execute("http://23e25190.ngrok.com/claim/new");
         }
     }
 
@@ -309,6 +305,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
 
         mCurrentLocation = location;
+
+        if (location.distanceTo(mCurrentLocation) > 100)
+        {
+            // do update stuff
+            mCurrentLocation = location;
+        }
     }
 
     @Override
@@ -326,34 +328,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .build();
         Log.i(TAG, "Google api client built");
         mGoogleApiClient.connect();
-    }
-
-    // routing stuff
-    @Override
-    public void onRoutingFailure()
-    {
-        // The Routing request failed
-        Log.i(TAG, "routing failed");
-    }
-
-    @Override
-    public void onRoutingStart()
-    {
-        // The Routing Request starts
-        Log.i(TAG, "routing started");
-    }
-
-    @Override
-    public void onRoutingSuccess(PolylineOptions mPolyOptions, Route route)
-    {
-        PolylineOptions polyOptions = new PolylineOptions();
-        polyOptions.color(Color.BLUE);
-        polyOptions.width(10);
-        polyOptions.addAll(mPolyOptions.getPoints());
-        mMap.addPolyline(polyOptions);
-
-        distance = route.getLength();
-        Toast.makeText(getApplicationContext(), "You traveled " + route.getDistanceText(), Toast.LENGTH_LONG).show();
     }
 
     // Given a URL, establishes an HttpUrlConnection and retrieves

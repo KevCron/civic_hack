@@ -40,6 +40,7 @@ public class LoginActivity extends AppCompatActivity
     private static final String TAG = "LoginActivity";
     private EditText userNameET;
     private EditText passwordET;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -68,6 +69,7 @@ public class LoginActivity extends AppCompatActivity
         editor.putString("Password", passwordET.getText().toString());
         editor.apply();
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("userName", userNameET.getText().toString());
         //startActivity(intent);
         Log.i(TAG, "login");
 
@@ -76,7 +78,8 @@ public class LoginActivity extends AppCompatActivity
         if (networkInfo != null && networkInfo.isConnected())
         {
             Log.i(TAG, "Network connected, retrieving data");
-            new AuthTask().execute("http://23e25190.ngrok.com/user/login");
+            //new AuthTask().execute("http://23e25190.ngrok.com/user/login");
+            startActivity(intent);
         }
         else
         {
