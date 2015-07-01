@@ -1,6 +1,8 @@
 # civic_hack
 Civic app
 
+![end_trip](https://github.com/KevCron/civic_hack/blob/master/screenshots/end_trip.png)
+
 An app I made for the Indy Civic Hack. The challenge was to create something that would streamline the way the Indianapolis Public School district provides gas reimbursements to contractors.
 
 The product my team (Kevin Cronly[Android], Chris McDonald[NodeJS backend], Harvey Kadyanji[Web App]) made included a contractor facing native Android app, a backend API written in NodeJS, and a manager/accountant web portal for seeing the claims and providing analytics, using BootStrap.
@@ -14,3 +16,17 @@ The app UI was all Material Design, using the recently released Android Design S
 The app then makes a POST request to our server, where the backend API sends it and additional analytics to the manager portal.
 
 Our team won the Indy Civic City Challenge #1 with a prize of $1500, the opportunity to pursue a contract with IPS, tickets to Indy 11 games, and meetings with the CEOs of TechPoint and Indy Chamber.
+
+See more screenshots below.
+
+![login](https://github.com/KevCron/civic_hack/blob/master/screenshots/login.png)
+
+![start_trip](https://github.com/KevCron/civic_hack/blob/master/screenshots/start_trip.png)
+
+![drawer](https://github.com/KevCron/civic_hack/blob/master/screenshots/drawer.png)
+
+![end_trip](https://github.com/KevCron/civic_hack/blob/master/screenshots/end_trip.png)
+
+![claim](https://github.com/KevCron/civic_hack/blob/master/screenshots/claim.png)
+
+![claim_submitted](https://github.com/KevCron/civic_hack/blob/master/screenshots/claim_submitted.png)
