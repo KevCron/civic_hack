@@ -1,8 +1,6 @@
 # civic_hack
 Civic app
 
-Civic app
-
 An app I made for the Indy Civic Hack. The challenge was to create something that would streamline the way the Indianapolis Public School district provides gas reimbursements to contractors.
 
 The product my team (Kevin Cronly[Android], Chris McDonald[NodeJS backend], Harvey Kadyanji[Web App]) made included a contractor facing native Android app, a backend API written in NodeJS, and a manager/accountant web portal for seeing the claims and providing analytics, using BootStrap.
